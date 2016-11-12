@@ -1,0 +1,11 @@
+E:\Death-Messages-Remasterd\bin\Release\DeathMessages.dll
+E:\Death-Messages-Remasterd\bin\Release\DeathMessages.pdb
+E:\Death-Messages-Remasterd\bin\Release\Assembly-CSharp-firstpass.dll
+E:\Death-Messages-Remasterd\bin\Release\Assembly-CSharp.dll
+E:\Death-Messages-Remasterd\bin\Release\Rocket.API.dll
+E:\Death-Messages-Remasterd\bin\Release\Rocket.Core.dll
+E:\Death-Messages-Remasterd\bin\Release\Rocket.Unturned.dll
+E:\Death-Messages-Remasterd\bin\Release\UnityEngine.dll
+E:\Death-Messages-Remasterd\bin\Release\Newtonsoft.Json.dll
+E:\Death-Messages-Remasterd\obj\Release\DeathMessages.dll
+E:\Death-Messages-Remasterd\obj\Release\DeathMessages.pdb

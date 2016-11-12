@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathMessages Remastered", "DeathMessages Remastered.csproj", "{5D8E331C-D36D-4A17-8E4A-C54EE5266375}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeathMessagesRemastered", "DeathMessagesRemastered.csproj", "{5D8E331C-D36D-4A17-8E4A-C54EE5266375}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
