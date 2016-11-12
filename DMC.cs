@@ -6,9 +6,6 @@ namespace DeathMessages
     {
         public bool suicidemsg;
         public bool healthwarningmsg;
-        public bool foodwarningmsg;
-        public bool waterwarningmsg;
-        public bool viruswarningmsg;
         public string warning1;
         public string warning2;
         public string zombie;
