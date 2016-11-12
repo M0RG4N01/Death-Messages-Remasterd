@@ -25,16 +25,16 @@ namespace Remastered.DeathMessages
         protected override void Load()
         {
             Instance = this;
-            Logger.Log("##########################################");
-            Logger.Log("Death Messages Remastered has been loaded!");
+            Rocket.Core.Logging.Logger.Log("##########################################");
+            Rocket.Core.Logging.Logger.Log("Death Messages Remastered has been loaded!");
             #region Event
             Rocket.Unturned.Events.UnturnedPlayerEvents.OnPlayerDeath += UnturnedPlayerEvents_OnPlayerDeath;
             Rocket.Unturned.Events.UnturnedPlayerEvents.OnPlayerUpdateHealth += UnturnedPlayerEvents_OnPlayerUpdateHealth;
-            
+
             #endregion
-            Logger.LogError("PLEASE NOTE:");
-            Logger.LogError("Don't forget to set the permission 'deathmessage' in one of the groups.");
-            Logger.Log("##########################################");
+            Rocket.Core.Logging.Logger.LogError("PLEASE NOTE:");
+            Rocket.Core.Logging.Logger.LogError("Don't forget to set the permission 'deathmessage' in one of the groups.");
+            Rocket.Core.Logging.Logger.Log("##########################################");
 
             
         }

@@ -5,3 +5,7 @@ E:\Death-Messages-Remasterd\bin\Debug\Rocket.Core.dll
 E:\Death-Messages-Remasterd\bin\Debug\Rocket.Unturned.dll
 E:\Death-Messages-Remasterd\obj\Debug\DeathMessages.dll
 E:\Death-Messages-Remasterd\obj\Debug\DeathMessages.pdb
+E:\Death-Messages-Remasterd\bin\Debug\Assembly-CSharp-firstpass.dll
+E:\Death-Messages-Remasterd\bin\Debug\Assembly-CSharp.dll
+E:\Death-Messages-Remasterd\bin\Debug\UnityEngine.dll
+E:\Death-Messages-Remasterd\bin\Debug\Newtonsoft.Json.dll
