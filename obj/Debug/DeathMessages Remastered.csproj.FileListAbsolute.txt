@@ -1,0 +1,7 @@
+E:\Death-Messages-Remasterd\bin\Debug\DeathMessages.dll
+E:\Death-Messages-Remasterd\bin\Debug\DeathMessages.pdb
+E:\Death-Messages-Remasterd\bin\Debug\Rocket.API.dll
+E:\Death-Messages-Remasterd\bin\Debug\Rocket.Core.dll
+E:\Death-Messages-Remasterd\bin\Debug\Rocket.Unturned.dll
+E:\Death-Messages-Remasterd\obj\Debug\DeathMessages.dll
+E:\Death-Messages-Remasterd\obj\Debug\DeathMessages.pdb
