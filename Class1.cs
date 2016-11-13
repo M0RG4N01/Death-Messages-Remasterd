@@ -26,17 +26,30 @@ namespace Remastered.DeathMessages
         protected override void Load()
         {
             Instance = this;
-            Rocket.Core.Logging.Logger.Log("##########################################");
             Rocket.Core.Logging.Logger.Log("Death Messages Remastered has been loaded!");
             #region Event
             Rocket.Unturned.Events.UnturnedPlayerEvents.OnPlayerDeath += UnturnedPlayerEvents_OnPlayerDeath;
             Rocket.Unturned.Events.UnturnedPlayerEvents.OnPlayerUpdateHealth += UnturnedPlayerEvents_OnPlayerUpdateHealth;
 
             #endregion
-            Rocket.Core.Logging.Logger.LogError("PLEASE NOTE:");
-            Rocket.Core.Logging.Logger.LogError("Groups options are now configurable in the config!");
-            Rocket.Core.Logging.Logger.Log("##########################################");
-
+            Rocket.Core.Logging.Logger.LogWarning("--");
+            if (Configuration.Instance.suicidemsg)
+            {
+                Rocket.Core.Logging.Logger.LogWarning("Suicide messages are enabled!");
+            }
+            else
+            {
+                Rocket.Core.Logging.Logger.LogError("Suicide messages are disabled!");
+            }
+            if (Configuration.Instance.healthwarningmsg)
+            {
+                Rocket.Core.Logging.Logger.LogWarning("Health warning messages are enabled!");
+            }
+            else
+            {
+                Rocket.Core.Logging.Logger.LogError("Health warning messages are disabled!");
+            }
+            Rocket.Core.Logging.Logger.LogWarning("--");
 
         }
 
@@ -49,7 +62,7 @@ namespace Remastered.DeathMessages
                 {
                 foreach (SteamPlayer current in Provider.clients)
                 {
-                    if (this.CheckDeathMessage(current.playerID.steamID))
+                    if (CheckDeathMessage(current.playerID.steamID))
                     {
                         num--;
                     }
@@ -58,121 +71,121 @@ namespace Remastered.DeathMessages
             {
                 if (cause.ToString() == "ZOMBIE")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.zombie + " ", Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.zombie + " ", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "GUN")
                 {
                     if (limb == ELimb.SKULL)
-                        UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.headshotgun + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + "!", Color.red);
+                        UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.headshotgun + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                     else
-                        UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + this.Configuration.Instance.gun + " " + player.CharacterName + "!", Color.red);
+                        UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + Configuration.Instance.gun + " " + player.CharacterName + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "MELEE")
                 {
                     if (limb == ELimb.SKULL)
-                        UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.headchop + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + "!", Color.red);
+                        UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.headchop + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                     else
-                        UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + this.Configuration.Instance.melee + " " + player.CharacterName + " " + this.Configuration.Instance.melee2, Color.red);
+                        UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + Configuration.Instance.melee + " " + player.CharacterName + " " + Configuration.Instance.melee2, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "PUNCH")
                 {
                     if (limb == ELimb.SKULL)
-                        UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.headpunch + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + "!", Color.red);
+                        UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.headpunch + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                     else
-                        UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + this.Configuration.Instance.punch + " " + player.CharacterName + " " + this.Configuration.Instance.punch2, Color.red);
+                        UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + Configuration.Instance.punch + " " + player.CharacterName + " " + Configuration.Instance.punch2, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "SHRED")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.shred, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.shred, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "ROADKILL")
                 {
-                    UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + this.Configuration.Instance.roadkill + " " + player.CharacterName + "!", Color.red);
+                    UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + Configuration.Instance.roadkill + " " + player.CharacterName + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "SPARK")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.spark, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.spark, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "VEHICLE")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.vehicle, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.vehicle, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "FOOD")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.food, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.food, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "WATER")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.water, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.water, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "INFECTION")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.infection, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.infection, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "BLEEDING")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.bleeding, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.bleeding, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "LANDMINE")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.landmine, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.landmine, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "BREATH")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.breath, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.breath, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "GRENADE")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.grenade, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.grenade, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "FREEZING")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.freezing, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.freezing, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "SENTRY")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.sentry, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.sentry, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "CHARGE")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.charge, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.charge, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "MISSILE")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.missile, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.missile, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "BONES")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.bones, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.bones, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "SPLASH")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.splash, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.splash, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "ACID")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.acid, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.acid, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "SPIT")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.spit, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.spit, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "BURNING")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.fire, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.fire, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "BURNER")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.fire, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.fire, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "BOULDER")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.boulder, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.boulder, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
 
-                else if (cause.ToString() == "SUICIDE" && this.Configuration.Instance.suicidemsg)
+                else if (cause.ToString() == "SUICIDE" && Configuration.Instance.suicidemsg)
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.suicide, Color.red);
+                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.suicide, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
 
             }
