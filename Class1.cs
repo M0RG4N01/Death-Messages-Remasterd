@@ -16,6 +16,7 @@ using Rocket.Unturned.Events;
 using DeathMessages;
 using Steamworks;
 using SDG.Unturned;
+using Rocket.API.Serialisation;
 
 namespace Remastered.DeathMessages
 {
@@ -33,15 +34,27 @@ namespace Remastered.DeathMessages
 
             #endregion
             Rocket.Core.Logging.Logger.LogError("PLEASE NOTE:");
-            Rocket.Core.Logging.Logger.LogError("Don't forget to set the permission 'deathmessage' in one of the groups.");
+            Rocket.Core.Logging.Logger.LogError("Groups options are now configurable in the config!");
             Rocket.Core.Logging.Logger.Log("##########################################");
 
-            
+
         }
 
+
         private void UnturnedPlayerEvents_OnPlayerDeath(Rocket.Unturned.Player.UnturnedPlayer player, EDeathCause cause, ELimb limb, CSteamID murderer)
+
         {
-            if (player.HasPermission("deathmessage"))
+            int num = Provider.clients.Count;
+            if (Instance.Configuration.Instance.Groups !=null && Instance.Configuration.Instance.Groups.Count > 0)
+                {
+                foreach (SteamPlayer current in Provider.clients)
+                {
+                    if (this.CheckDeathMessage(current.playerID.steamID))
+                    {
+                        num--;
+                    }
+                }
+            }
             {
                 if (cause.ToString() == "ZOMBIE")
                 {
@@ -100,11 +113,11 @@ namespace Remastered.DeathMessages
                 {
                     UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.bleeding, Color.red);
                 }
-                else if (cause.ToString() == "LANDMINE") 
+                else if (cause.ToString() == "LANDMINE")
                 {
                     UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.landmine, Color.red);
                 }
-                else if (cause.ToString() == "BREATH") 
+                else if (cause.ToString() == "BREATH")
                 {
                     UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.breath, Color.red);
                 }
@@ -161,7 +174,7 @@ namespace Remastered.DeathMessages
                 {
                     UnturnedChat.Say(player.CharacterName + " " + this.Configuration.Instance.suicide, Color.red);
                 }
-               
+
             }
         }
         protected override void Unload()
@@ -181,6 +194,20 @@ namespace Remastered.DeathMessages
                 }
             }
         }
+        private bool CheckDeathMessage(CSteamID CSteamID)
+        {
+            if (SteamAdminlist.checkAdmin(CSteamID))
+            {
+                return true;
+            }
+            foreach (RocketPermissionsGroup current in R.Permissions.GetGroups(new RocketPlayer(CSteamID.ToString(), null, false), true))
+            {
+                if (Instance.Configuration.Instance.Groups.Contains(current.Id))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
-
 }

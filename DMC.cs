@@ -1,4 +1,6 @@
 using Rocket.API;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace DeathMessages
 {
@@ -40,7 +42,9 @@ namespace DeathMessages
         public string fire;
         public string spark;
         public string boulder;
-        
+        [XmlArray("Groups"), XmlArrayItem(ElementName = "Group")]
+        public List<string> Groups = new List<string>();
+
         public void LoadDefaults()
         {
 
@@ -79,7 +83,13 @@ namespace DeathMessages
                     fire = "was killed by fire!";
                     spark = "has been sparked out";
                     boulder = "was killed by a gigantic boulder!";
-
+                    this.Groups = new List<string>
+                    {
+                        "default",
+                        "vip"
+                    };
         }
+
     }
+   
 }
