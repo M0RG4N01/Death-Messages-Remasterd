@@ -17,12 +17,14 @@ using DeathMessages;
 using Steamworks;
 using SDG.Unturned;
 using Rocket.API.Serialisation;
+using Rocket.Unturned.Player;
 
 namespace Remastered.DeathMessages
 {
     public class PlayerDeath : RocketPlugin<DMC2>
     {
         public static PlayerDeath Instance;
+        public static UnturnedPlayer murderer3;
         protected override void Load()
         {
             Instance = this;
@@ -57,6 +59,7 @@ namespace Remastered.DeathMessages
         private void UnturnedPlayerEvents_OnPlayerDeath(Rocket.Unturned.Player.UnturnedPlayer player, EDeathCause cause, ELimb limb, CSteamID murderer)
 
         {
+            murderer3 = UnturnedPlayer.FromCSteamID(murderer);
             int num = Provider.clients.Count;
             if (Instance.Configuration.Instance.Groups !=null && Instance.Configuration.Instance.Groups.Count > 0)
                 {
@@ -76,14 +79,14 @@ namespace Remastered.DeathMessages
                 else if (cause.ToString() == "GUN")
                 {
                     if (limb == ELimb.SKULL)
-                        UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.headshotgun + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
+                        UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.headshotgun + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + Configuration.Instance.usinga + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).Player.equipment.asset.itemName.ToString() +  "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                     else
-                        UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + Configuration.Instance.gun + " " + player.CharacterName + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
+                        UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + Configuration.Instance.gun + " " + player.CharacterName + " " + Configuration.Instance.usinga + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).Player.equipment.asset.itemName.ToString() + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }
                 else if (cause.ToString() == "MELEE")
                 {
                     if (limb == ELimb.SKULL)
-                        UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.headchop + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
+                        UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.headchop + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " +  "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                     else
                         UnturnedChat.Say(Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + " " + Configuration.Instance.melee + " " + player.CharacterName + " " + Configuration.Instance.melee2, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                 }

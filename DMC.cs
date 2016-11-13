@@ -42,6 +42,7 @@ namespace DeathMessages
         public string fire;
         public string spark;
         public string boulder;
+        public string usinga;
         [XmlArray("Groups"), XmlArrayItem(ElementName = "Group")]
         public List<string> Groups = new List<string>();
         public string messagecolour;
@@ -84,6 +85,7 @@ namespace DeathMessages
                     fire = "was killed by fire!";
                     spark = "has been sparked out";
                     boulder = "was killed by a gigantic boulder!";
+                    usinga = "using a";
                     Groups = new List<string>
                     {
                         "default",
