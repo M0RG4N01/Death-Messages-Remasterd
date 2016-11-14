@@ -91,7 +91,7 @@ namespace DeathMessages
                         "default",
                         "vip"
                     };
-                    messagecolour = "red";
+                    messagecolour = "yellow";
         }
 
     }

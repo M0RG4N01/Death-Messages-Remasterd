@@ -12,4 +12,3 @@ E:\Death-Messages-Remasterd\obj\Release\DeathMessagesRemastered.pdb
 E:\Death-Messages-Remasterd\bin\Release\Assembly-UnityScript-firstpass.dll
 E:\Death-Messages-Remasterd\bin\Release\Boo.Lang.dll
 E:\Death-Messages-Remasterd\bin\Release\UnityScript.Lang.dll
-E:\Death-Messages-Remasterd\obj\Release\DeathMessagesRemastered.csprojResolveAssemblyReference.cache
