@@ -2,7 +2,7 @@ using Rocket.API;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace DeathMessages
+namespace Remastered.DeathMessages
 {
     public class DMC2 : IRocketPluginConfiguration
     {
@@ -46,12 +46,19 @@ namespace DeathMessages
         [XmlArray("Groups"), XmlArrayItem(ElementName = "Group")]
         public List<string> Groups = new List<string>();
         public string messagecolour;
+        public bool UconomyEnabled;
+        public int Head;
+        public int Arm;
+        public int Leg;
+        public int Body;
+        public int Roadkill;
 
         public void LoadDefaults()
         {
 
                     suicidemsg = true;
                     healthwarningmsg = true;
+                    UconomyEnabled = true;
                     warning1 = "WARNING: You are about to die!";
                     warning2 = "We recommend you to patch yourself up!";
                     zombie = "has been mauled by a zombie!";
@@ -92,6 +99,11 @@ namespace DeathMessages
                         "vip"
                     };
                     messagecolour = "yellow";
+                    Head = 30;
+                    Body = 15;
+                    Arm = 5;
+                    Leg = 5;
+                    Roadkill = 10;
         }
 
     }
