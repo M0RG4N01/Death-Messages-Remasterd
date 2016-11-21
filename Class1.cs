@@ -451,10 +451,8 @@ namespace Remastered.DeathMessages
                             Rocket.Core.Logging.Logger.LogError("Uconomy not found, loading without it!");
                         }
                     }
-                    catch (Exception arg)
+                    catch (Exception)
                     {
-                            Rocket.Core.Logging.Logger.LogError("Unknown error of plugin Uconomy");
-                            Rocket.Core.Logging.Logger.LogError("Issue: " + arg);
                     }
                 }
 
@@ -486,10 +484,8 @@ namespace Remastered.DeathMessages
                         UnturnedPlayer exp = murderer3;
                         exp.Experience =  + num1;
                     }
-                    catch (Exception arg)
+                    catch (Exception)
                     {
-                        Rocket.Core.Logging.Logger.LogError("Unknown error with experience");
-                        Rocket.Core.Logging.Logger.LogError("Issue: " + arg);
                     }
                 }
             }
