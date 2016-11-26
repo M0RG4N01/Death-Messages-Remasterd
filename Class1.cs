@@ -67,11 +67,9 @@ namespace Remastered.DeathMessages
             {
                 Rocket.Core.Logging.Logger.LogError("Experience is disabled!");
             }
-
             Rocket.Core.Logging.Logger.LogWarning("--");
 
         }
-
 
         private void UnturnedPlayerEvents_OnPlayerDeath(Rocket.Unturned.Player.UnturnedPlayer player, EDeathCause cause, ELimb limb, CSteamID murderer)
 
@@ -215,6 +213,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "ROADKILL")
                 {
@@ -222,6 +224,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         UnturnedChat.Say(murderer, "You recieved" + " " + Configuration.Instance.Roadkill + " " + Uconomy.Instance.Configuration.Instance.MoneyName + " " + "for Roadkill!", Color.yellow);
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "SPARK")
@@ -231,6 +237,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "VEHICLE")
                 {
@@ -238,6 +248,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         // Do nothing
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "FOOD")
@@ -247,6 +261,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "WATER")
                 {
@@ -254,6 +272,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         // Do nothing
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "INFECTION")
@@ -263,6 +285,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "BLEEDING")
                 {
@@ -270,6 +296,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         // Do nothing
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "LANDMINE")
@@ -279,6 +309,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "BREATH")
                 {
@@ -286,6 +320,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         // Do nothing
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "GRENADE")
@@ -295,6 +333,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "FREEZING")
                 {
@@ -302,6 +344,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         // Do nothing
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "SENTRY")
@@ -311,6 +357,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "CHARGE")
                 {
@@ -318,6 +368,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         // Do nothing
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "MISSILE")
@@ -327,6 +381,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "BONES")
                 {
@@ -334,6 +392,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         // Do nothing
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "SPLASH")
@@ -343,6 +405,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "ACID")
                 {
@@ -350,6 +416,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         // Do nothing
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "SPIT")
@@ -359,6 +429,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "BURNING")
                 {
@@ -366,6 +440,10 @@ namespace Remastered.DeathMessages
                     if (Configuration.Instance.UconomyEnabled)
                     {
                         // Do nothing
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
                     }
                 }
                 else if (cause.ToString() == "BURNER")
@@ -375,6 +453,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
                 else if (cause.ToString() == "BOULDER")
                 {
@@ -383,6 +465,10 @@ namespace Remastered.DeathMessages
                     {
                         // Do nothing
                     }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        //Do Nothing
+                    }
                 }
 
                 else if (cause.ToString() == "SUICIDE" && Configuration.Instance.suicidemsg)
@@ -390,10 +476,17 @@ namespace Remastered.DeathMessages
                     UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.suicide, UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
                     if (Configuration.Instance.UconomyEnabled)
                     {
-                        // Do nothing
+                        return;
+                    }
+                    if (Configuration.Instance.ExperienceEnabled)
+                    {
+                        return;
                     }
                 }
-                if (limb == ELimb.SKULL)
+
+                bool suicided = cause.ToString() == "SUICIDE";
+
+                if (limb == ELimb.SKULL && !suicided)
                 {
                     Part = ("head");
                 }
@@ -413,11 +506,8 @@ namespace Remastered.DeathMessages
                 {
                     try
                     {
-                        if (IsDependencyLoaded("Uconomy"))
                         {
-                            ExecuteDependencyCode("Uconomy", delegate (IRocketPlugin plugin)
                             {
-                                Uconomy uconomy = (Uconomy)plugin;
                                 int value = 0;
                                 if (Part == "head")
                                 {
@@ -443,17 +533,15 @@ namespace Remastered.DeathMessages
                                 {
                                     Rocket.Core.Logging.Logger.LogWarning("");
                                 }
-                                uconomy.Database.IncreaseBalance(murderer3.CSteamID.ToString(), value);
-                            });
+                                Uconomy.Instance.Database.IncreaseBalance(murderer3.CSteamID.ToString(), value);
+                            };
                         }
-                        else
-                        {
-                            Rocket.Core.Logging.Logger.LogError("Uconomy not found, loading without it!");
                         }
-                    }
-                    catch (Exception)
+                    catch
                     {
+                        return;
                     }
+
                 }
 
                 if (Configuration.Instance.ExperienceEnabled)

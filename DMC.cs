@@ -11,6 +11,8 @@ namespace Remastered.DeathMessages
         public bool healthwarningmsg;
         public bool ExperienceEnabled;
         public bool UconomyEnabled;
+        public bool ShowErrorMessages;
+        public bool ShowDebugInfo;
         public string warning1;
         public string warning2;
         public string zombie;
@@ -65,6 +67,8 @@ namespace Remastered.DeathMessages
             healthwarningmsg = true;
             UconomyEnabled = true;
             ExperienceEnabled = true;
+            ShowErrorMessages = false;
+            ShowDebugInfo = false;
             warning1 = "WARNING: You are about to die!";
             warning2 = "We recommend you to patch yourself up!";
             zombie = "has been mauled by a zombie!";

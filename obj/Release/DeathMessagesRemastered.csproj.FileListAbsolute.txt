@@ -28,4 +28,3 @@ E:\Development\Death-Messages-Remasterd\bin\Release\UnityEngine.dll
 E:\Development\Death-Messages-Remasterd\bin\Release\Newtonsoft.Json.dll
 E:\Development\Death-Messages-Remasterd\bin\Release\Boo.Lang.dll
 E:\Development\Death-Messages-Remasterd\bin\Release\UnityScript.Lang.dll
-E:\Development\Death-Messages-Remasterd\obj\Release\DeathMessagesRemastered.csprojResolveAssemblyReference.cache
