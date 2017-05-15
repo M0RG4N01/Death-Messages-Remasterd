@@ -11,6 +11,7 @@ namespace Remastered.DeathMessages
         public bool healthwarningmsg;
         public bool ExperienceEnabled;
         public bool UconomyEnabled;
+        public bool ZombieMessagesEnabled;
         public bool ShowErrorMessages;
         public bool ShowDebugInfo;
         public string warning1;
@@ -66,6 +67,7 @@ namespace Remastered.DeathMessages
             suicidemsg = true;
             healthwarningmsg = true;
             UconomyEnabled = true;
+            ZombieMessagesEnabled = true;
             ExperienceEnabled = true;
             ShowErrorMessages = false;
             ShowDebugInfo = false;

@@ -18,6 +18,7 @@ using SDG.Unturned;
 using Rocket.API.Serialisation;
 using Rocket.Unturned.Player;
 using fr34kyn01535.Uconomy;
+using Rocket.API.Collections;
 
 namespace Remastered.DeathMessages
 {
@@ -25,6 +26,40 @@ namespace Remastered.DeathMessages
     {
         public static PlayerDeath Instance;
         public static UnturnedPlayer murderer3;
+
+        public override TranslationList DefaultTranslations
+        {
+            get
+            {
+                return new TranslationList()
+                {
+                    {"gun","{0} [GUN] {2} {1}"},
+                    {"kill","ADMIN [KILL] {0}"},
+                    {"null","[NULL] {0}"},
+                    {"food","[FOOD] {0}"},
+                    {"arena","[ARENA] {0}"},
+                    {"shred","[SHRED] {0}"},
+                    {"punch","{0} [PUNCH] {2} {1}"},
+                    {"bones","[BONES] {0}"},
+                    {"melee","{0} [MELEE] {2} {1}"},
+                    {"water","[WATER] {0}"},
+                    {"breath","[BREATH] {0}"},
+                    {"zombie","[ZOMBIE] {0}"},
+                    {"animal","[ANIMAL] {0}"},
+                    {"grenade","??? [EXPLOSION] {0}"},
+                    {"vehicle","[VEHICLE] {0}"},
+                    {"suicide","[SUICIDE] {0}"},
+                    {"burning","[BURNING] {0}"},
+                    {"headshot","+ [HEADSHOT]" },
+                    {"landmine","??? [LANDMINE] {0}"},
+                    {"roadkill","{0} [ROADKILL] {1}"},
+                    {"bleeding","[BLEEDING] {0}"},
+                    {"freezing","[FREEZING] {0}"},
+                    {"infection","[INFECTION] {0}"},
+                };
+            }
+        }
+
         protected override void Load()
         {
             Instance = this;
@@ -50,14 +85,6 @@ namespace Remastered.DeathMessages
             else
             {
                 Rocket.Core.Logging.Logger.LogError("Health warning messages are disabled!");
-            }
-            if (Configuration.Instance.UconomyEnabled)
-            {
-                Rocket.Core.Logging.Logger.LogWarning("Uconomy is enabled!");
-            }
-            else
-            {
-                Rocket.Core.Logging.Logger.LogError("Uconomy is disabled!");
             }
             if (Configuration.Instance.ExperienceEnabled)
             {
@@ -91,9 +118,9 @@ namespace Remastered.DeathMessages
 
             
             {
-                if (cause.ToString() == "ZOMBIE")
+                if (Configuration.Instance.ZombieMessagesEnabled = true && cause.ToString() == "ZOMBIE")
                 {
-                    UnturnedChat.Say(player.CharacterName + " " + Configuration.Instance.zombie + " ", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
+                    UnturnedChat.Say(Translate("zombie", player.CharacterName + " " + Configuration.Instance.zombie + " ", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red)));
                 }
                 else if (cause.ToString() == "GUN")
                 {
