@@ -122,6 +122,43 @@ namespace Remastered.DeathMessages
                 {
                     UnturnedChat.Say(Translate("zombie", player.CharacterName + " " + Configuration.Instance.zombie + " ", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red)));
                 }
+                else if (Configuration.Instance.ShowDistance = true && cause.ToString() == "GUN")
+                {
+                    if (limb == ELimb.SKULL)
+                    {
+                        UnturnedChat.Say(player.CharacterName + ", " + Configuration.Instance.headshotgun + ", " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).CharacterName + ", " + "[\u2719" + UnturnedPlayer.FromCSteamID(murderer).Health.ToString() + "]" + ", " + Configuration.Instance.usinga + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).Player.equipment.asset.itemName.ToString() + " from " + Math.Round((double)Vector3.Distance(player.Position, murderer3.Position)).ToString() + "m!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
+                        if (Configuration.Instance.UconomyEnabled)
+                        {
+                            UnturnedChat.Say(murderer, "You recieved" + " " + Configuration.Instance.Head + " " + Uconomy.Instance.Configuration.Instance.MoneyName + " " + "for getting a Headshot!", Color.green);
+                        }
+                    }
+                    else if (limb == ELimb.SPINE)
+                    {
+                        UnturnedChat.Say(UnturnedPlayer.FromCSteamID(murderer).CharacterName + ", " + "HP:" + " " + UnturnedPlayer.FromCSteamID(murderer).Health.ToString() + "%" + ", " + Configuration.Instance.gun + ", " + player.CharacterName + ", " + Configuration.Instance.usinga + " " + UnturnedPlayer.FromCSteamID(murderer).Player.equipment.asset.itemName.ToString() + " " + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
+                        if (Configuration.Instance.UconomyEnabled)
+                        {
+                            UnturnedChat.Say(murderer, "You recieved" + " " + Configuration.Instance.Body + " " + Uconomy.Instance.Configuration.Instance.MoneyName + " " + "for getting a body shot!", Color.green);
+                        }
+                    }
+                    else if (limb == ELimb.RIGHT_ARM || limb == ELimb.LEFT_ARM || limb == ELimb.LEFT_HAND || limb == ELimb.RIGHT_HAND)
+                    {
+                        UnturnedChat.Say(UnturnedPlayer.FromCSteamID(murderer).CharacterName + ", " + "HP:" + " " + UnturnedPlayer.FromCSteamID(murderer).Health.ToString() + "%" + ", " + Configuration.Instance.gun + ", " + player.CharacterName + ", " + Configuration.Instance.usinga + " " + UnturnedPlayer.FromCSteamID(murderer).Player.equipment.asset.itemName.ToString() + " " + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
+                        if (Configuration.Instance.UconomyEnabled)
+                        {
+                            UnturnedChat.Say(murderer, "You recieved" + " " + Configuration.Instance.Arm + " " + Uconomy.Instance.Configuration.Instance.MoneyName + " " + "for getting an arm shot!", Color.green);
+                        }
+                    }
+                    else if (limb == ELimb.RIGHT_LEG || limb == ELimb.LEFT_LEG || limb == ELimb.LEFT_FOOT || limb == ELimb.RIGHT_FOOT)
+                    {
+                        UnturnedChat.Say(UnturnedPlayer.FromCSteamID(murderer).CharacterName + ", " + "HP:" + " " + UnturnedPlayer.FromCSteamID(murderer).Health.ToString() + "%" + ", " + Configuration.Instance.gun + ", " + player.CharacterName + ", " + Configuration.Instance.usinga + " " + UnturnedPlayer.FromCSteamID(murderer).Player.equipment.asset.itemName.ToString() + " " + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
+                        if (Configuration.Instance.UconomyEnabled)
+                        {
+                            UnturnedChat.Say(murderer, "You recieved" + " " + Configuration.Instance.Leg + " " + Uconomy.Instance.Configuration.Instance.MoneyName + " " + "for getting a leg shot!", Color.green);
+                        }
+                    }
+                    else
+                        UnturnedChat.Say(UnturnedPlayer.FromCSteamID(murderer).CharacterName + ", " + "HP:" + " " + UnturnedPlayer.FromCSteamID(murderer).Health.ToString() + "%" + ", " + Configuration.Instance.gun + ", " + player.CharacterName + ", " + Configuration.Instance.usinga + " " + Rocket.Unturned.Player.UnturnedPlayer.FromCSteamID(murderer).Player.equipment.asset.itemName.ToString() + " " + "!", UnturnedChat.GetColorFromName(Configuration.Instance.messagecolour, Color.red));
+                }
                 else if (cause.ToString() == "GUN")
                 {
                     if (limb == ELimb.SKULL)

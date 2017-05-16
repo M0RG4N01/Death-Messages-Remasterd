@@ -14,6 +14,7 @@ namespace Remastered.DeathMessages
         public bool ZombieMessagesEnabled;
         public bool ShowErrorMessages;
         public bool ShowDebugInfo;
+        public bool ShowDistance;
         public string warning1;
         public string warning2;
         public string zombie;
@@ -70,6 +71,7 @@ namespace Remastered.DeathMessages
             ZombieMessagesEnabled = true;
             ExperienceEnabled = true;
             ShowErrorMessages = false;
+            ShowDistance = true;
             ShowDebugInfo = false;
             warning1 = "WARNING: You are about to die!";
             warning2 = "We recommend you to patch yourself up!";
