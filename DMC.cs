@@ -50,8 +50,6 @@ namespace Remastered.DeathMessages
         public string spark;
         public string boulder;
         public string usinga;
-        [XmlArray("Groups"), XmlArrayItem(ElementName = "Group")]
-        public List<string> Groups = new List<string>();
         public int Head;
         public int Arm;
         public int Leg;
@@ -107,11 +105,6 @@ namespace Remastered.DeathMessages
             spark = "has been sparked out";
             boulder = "was killed by a gigantic boulder!";
             usinga = "using a";
-            Groups = new List<string>
-                    {
-                        "default",
-                        "vip"
-                    };
             messagecolour = "yellow";
             Head = 30;
             Body = 15;
