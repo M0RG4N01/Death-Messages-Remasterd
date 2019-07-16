@@ -43,3 +43,6 @@ Temporary Items
 .apdisk
 
 .vs/DeathMessagesRemastered/v14/.suo
+
+# Directories
+.bin/
