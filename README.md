@@ -6,16 +6,25 @@ Examples of some death messages: “{player} has been mauled by a zombie!” , �
 
 Features
 
--You’re able to change the color of the death message in the config.
--All death messages are fully configurable based on the cause of death.
--You’re able to see which gun the killer used to kill a player.
--You can see the HP % of the Killer.
--You can see the distance of the Killer from the Victim.
--You can get warnings when your HP is low.
--Specific death messages are shown for which body part was hit before the player died. E.g (“{player} was shot in the head by {murderer}”).
--You can configure EXP given to murderers for whichever body part they used to kill a player.
--You can configure credits given to murders for whichever body part they used to kill a player.
--Options are added to enable/disable specific parts of the plugin such as Uconomy, Zombie Deaths, Exp, Low Health Warning, Player Distance and Suicides. 
+You’re able to change the color of the death message in the config.
+
+All death messages are fully configurable based on the cause of death.
+
+You’re able to see which gun the killer used to kill a player.
+
+You can see the HP % of the Killer.
+
+You can see the distance of the Killer from the Victim.
+
+You can get warnings when your HP is low.
+
+Specific death messages are shown for which body part was hit before the player died. E.g (“{player} was shot in the head by {murderer}”).
+
+You can configure EXP given to murderers for whichever body part they used to kill a player.
+
+You can configure credits given to murders for whichever body part they used to kill a player.
+
+Options are added to enable/disable specific parts of the plugin such as Uconomy, Zombie Deaths, Exp, Low Health Warning, Player Distance and Suicides. 
 
 Please be aware! If you don’t want to use uconomy with the plugin make sure that;
 
