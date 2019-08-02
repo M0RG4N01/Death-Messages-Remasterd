@@ -77,9 +77,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="DMC.cs" />
+    <Compile Include="DeathMessagesPlugin.cs" />
+    <Compile Include="DeathMessagesConfiguration.cs" />
+    <Compile Include="ExperienceRewards.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UconomyRewards.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="lib\Assembly-CSharp-firstpass.dll" />
