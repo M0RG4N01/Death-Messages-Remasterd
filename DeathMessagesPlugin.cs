@@ -180,7 +180,8 @@ namespace Remastered.DeathMessages
 
             if (Configuration.Instance.UconomyRewardsEnabled)
             {
-                if (Uconomy.Instance == null)
+                if (!IsDependencyLoaded("Uconomy") || Uconomy.Instance == null ||
+                    Uconomy.Instance.Configuration.Instance == null || Uconomy.Instance.Database == null)
                 {
                     Logger.Log(
                         "Uconomy is set to enabled, but it doesn't seem to be currently loaded at all, if even correctly. Please verify it.");
@@ -228,11 +229,12 @@ namespace Remastered.DeathMessages
             if (moneyReward != 0)
                 try
                 {
-                    Uconomy.Instance.Database.IncreaseBalance(murdererId.ToString(), moneyReward);
+                    Uconomy.Instance.Database?.IncreaseBalance(murdererId.ToString(), moneyReward);
                 }
                 catch (Exception e)
                 {
                     Logger.LogError(e.Message);
+                    Logger.ExternalLog(e, ConsoleColor.Red);
                 }
 
             if (experienceReward == 0) return;
@@ -244,6 +246,7 @@ namespace Remastered.DeathMessages
             catch (Exception e)
             {
                 Logger.LogError(e.Message);
+                Logger.ExternalLog(e, ConsoleColor.Red);
             }
         }
     }
