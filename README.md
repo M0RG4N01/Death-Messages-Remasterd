@@ -1,37 +1,59 @@
-# Death-Messages-Remasterd
+# Death-Messages-Remastered
 
-This plugin is used to send messages of different causes of deaths in chat, it can work with Uconomy to give players credits when they kill someone and also can give players exp for killing.
+This plugin allows death messages to be shown in chat when a player dies.
+Also allows giving players Uconomy cash or Exp for killing someone.
 
-Examples of some death messages: “{player} has been mauled by a zombie!” , “{murderer} shot and killed {player}” , ” {player} has died due to an explosion of a vehicle!” , “{player} was obliterated by a charge!”, “{player} was shot in the head by {murderer}”
+[Download from harbor.rocketmod.net](https://harbor.rocketmod.net/plugins/death-messages-remastered/)
 
-[] Features []
+# Features
+- Custom color for all death messages (not respectively).
+- All death messages are fully configurable based on the cause of death.
+- Display weapon name used by the Killer (if killed with one).
+- Display remaining health of the Killer.
+- Display distance of the kill (distance between Killer and Victim).
+- Display warnings when someone reaches low health (private warnings).
+- Custom messages for head kills (headshot, melee to the head, punch to the head).
+- EXP or Uconomy cash given to murderers depending on which body part they hit to kill a player.
+- Enable/disable specific parts of the plugin such as Uconomy rewards, Zombie death messages, Exp rewards, Low Health Warning messages and Suicide messages.
 
-[] You’re able to change the color of the death message in the config.
+# Translations
 
-[] All death messages are fully configurable based on the cause of death.
+#### Kill Translations
+{0} - Victim's name (Defaults to `Someone` if not available)
 
-[] You’re able to see which gun the killer used to kill a player.
+{1} - Killer's name (Defaults to `Anonymous` if not available)
 
-[] You can see the HP % of the Killer.
+{2} - Killer's health (Defaults to `0` if not available)
 
-[] You can see the distance of the Killer from the Victim.
+{3} - Killer's vehicle name (Defaults to `N/A` if not available)
 
-[] You can get warnings when your HP is low.
+{4} - Killer's weapon name (Defaults to `N/A` if not available)
 
-[] Specific death messages are shown for which body part was hit before the player died. E.g (“{player} was shot in the head by     {murderer}”).
+{5} - Distance between killer and victim (Each position defaults to `0` if not available)
 
-[] You can configure EXP given to murderers for whichever body part they used to kill a player.
+Example Translation:
 
-[] You can configure credits given to murders for whichever body part they used to kill a player.
+`{0} was shot by {1} from {5}m using a {4}. Remaining health: {2}%`
 
-[] Options are added to enable/disable specific parts of the plugin such as Uconomy, Zombie Deaths, Exp, Low Health Warning, Player Distance and Suicides. 
+Example Output:
 
-Please be aware! If you don’t want to use uconomy with the plugin make sure that;
+`Pasta was shot by Morgan from 50m using a timberwolf. Remaining health: 85%`
 
-You have uconomy in the libarary folder located in ;
+#### Reward Translations
+{0} - Money Symbol (Will be empty if it's an experience reward)
 
-\Servers\server\Rocket\Libraries
+{1} - Money Reward
 
-This means that you don’t need to use uconomy with death messages, and the death messages plugin will still work.
+{2} - Money Name (Will be `EXP` if it's an experience reward)
 
- 
+Example Translation:
+`You received {0}{1} {2} for getting a head punch kill!`
+
+Example Output:
+`You received $50 dosh for getting a head punch kill!`
+
+# What if I don't want to use uconomy?
+Make sure then that you have uconomy in the library folder located in `\Servers\server\Rocket\Libraries`
+
+# What if I use AviEconomy?
+Then you should use UconomyToAviEconomy, provided by Avi's gateway plugin.
