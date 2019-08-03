@@ -17,6 +17,8 @@ Also allows giving players Uconomy cash or Exp for killing someone.
 - Enable/disable specific parts of the plugin such as Uconomy rewards, Zombie death messages, Exp rewards, Low Health Warning messages and Suicide messages.
 
 # Translations
+
+#### Kill Translations
 {0} - Victim's name (Defaults to `Someone` if not available)
 
 {1} - Killer's name (Defaults to `Anonymous` if not available)
@@ -35,7 +37,20 @@ Example Translation:
 
 Example Output:
 
-`Pasta was shot by Morgan from 50m using a timberwolf. Remaining health: 85%` 
+`Pasta was shot by Morgan from 50m using a timberwolf. Remaining health: 85%`
+
+#### Reward Translations
+{0} - Money Symbol (Will be empty if it's an experience reward)
+
+{1} - Money Reward
+
+{2} - Money Name (Will be `EXP` if it's an experience reward)
+
+Example Translation:
+`You received {0}{1} {2} for getting a head punch kill!`
+
+Example Output:
+`You received $50 dosh for getting a head punch kill!`
 
 # What if I don't want to use uconomy?
 Make sure then that you have uconomy in the library folder located in `\Servers\server\Rocket\Libraries`

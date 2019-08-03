@@ -62,19 +62,23 @@ namespace Remastered.DeathMessages
             {"DEATH_SPIT", "{0} died of shame from spits!"},
             {"DEATH_SPARK", "{0} was shocked to his death!"},
 
-            {"ROADKILL_REWARD", "You received {0} {1} for roadkill!"},
-            {"PUNCH_SKULL_REWARD", "You received {0} {1} for getting a head punch kill!"},
-            {"PUNCH_SPINE_REWARD", "You received {0} {1} for getting a torso punch kill!"},
-            {"PUNCH_ARM_REWARD", "You received {0} {1} for getting an arm punch kill!"},
-            {"PUNCH_LEG_REWARD", "You received {0} {1} for getting a leg punch kill!"},
-            {"MELEE_SKULL_REWARD", "You received {0} {1} for getting a head melee kill!"},
-            {"MELEE_SPINE_REWARD", "You received {0} {1} for getting a torso melee kill!"},
-            {"MELEE_ARM_REWARD", "You received {0} {1} for getting an arm melee kill!"},
-            {"MELEE_LEG_REWARD", "You received {0} {1} for getting a leg melee kill!"},
-            {"GUN_SKULL_REWARD", "You received {0} {1} for getting a headshot kill!"},
-            {"GUN_SPINE_REWARD", "You received {0} {1} for getting a torso shot kill!"},
-            {"GUN_ARM_REWARD", "You received {0} {1} for getting an arm shot kill!"},
-            {"GUN_LEG_REWARD", "You received {0} {1} for getting a leg shot kill!"}
+            /* 0 - Money Symbol
+             * 1 - Money Reward
+             * 2 - Money Name
+             */
+            {"ROADKILL_REWARD", "You received {0}{1} {2} for roadkill!"},
+            {"PUNCH_SKULL_REWARD", "You received {0}{1} {2} for getting a head punch kill!"},
+            {"PUNCH_SPINE_REWARD", "You received {0}{1} {2} for getting a torso punch kill!"},
+            {"PUNCH_ARM_REWARD", "You received {0}{1} {2} for getting an arm punch kill!"},
+            {"PUNCH_LEG_REWARD", "You received {0}{1} {2} for getting a leg punch kill!"},
+            {"MELEE_SKULL_REWARD", "You received {0}{1} {2} for getting a head melee kill!"},
+            {"MELEE_SPINE_REWARD", "You received {0}{1} {2} for getting a torso melee kill!"},
+            {"MELEE_ARM_REWARD", "You received {0}{1} {2} for getting an arm melee kill!"},
+            {"MELEE_LEG_REWARD", "You received {0}{1} {2} for getting a leg melee kill!"},
+            {"GUN_SKULL_REWARD", "You received {0}{1} {2} for getting a headshot kill!"},
+            {"GUN_SPINE_REWARD", "You received {0}{1} {2} for getting a torso shot kill!"},
+            {"GUN_ARM_REWARD", "You received {0}{1} {2} for getting an arm shot kill!"},
+            {"GUN_LEG_REWARD", "You received {0}{1} {2} for getting a leg shot kill!"}
         };
 
         protected override void Load()
@@ -134,6 +138,7 @@ namespace Remastered.DeathMessages
         {
             var murderer = UnturnedPlayer.FromCSteamID(murdererId);
             var moneyName = "N/A";
+            var moneySymbol = "N/A";
             var limbWord = "";
             var moneyReward = 0;
             var experienceReward = 0u;
@@ -190,6 +195,7 @@ namespace Remastered.DeathMessages
                 else
                 {
                     moneyName = Uconomy.Instance.Configuration.Instance.MoneyName;
+                    moneySymbol = Uconomy.Instance.Configuration.Instance.MoneySymbol;
                 }
             }
             else
@@ -215,13 +221,23 @@ namespace Remastered.DeathMessages
                             murderer?.Position ?? Vector3.zero))),
                     UnturnedChat.GetColorFromName(Configuration.Instance.Messagecolour, Color.red));
 
-                if (moneyReward != 0)
-                    UnturnedChat.Say(murderer,
-                        Translate(
-                            cause == EDeathCause.PUNCH || cause == EDeathCause.MELEE || cause == EDeathCause.GUN
-                                ? $"{cause}_{limbWord}_REWARD"
-                                : $"{cause}_REWARD",
-                            moneyReward, moneyName), Color.green);
+                if (murderer != null)
+                {
+                    if (moneyReward != 0)
+                        UnturnedChat.Say(murderer,
+                            Translate(
+                                cause == EDeathCause.PUNCH || cause == EDeathCause.MELEE || cause == EDeathCause.GUN
+                                    ? $"{cause}_{limbWord}_REWARD"
+                                    : $"{cause}_REWARD",
+                                moneySymbol, moneyReward, moneyName), Color.green);
+                    if (experienceReward != 0)
+                        UnturnedChat.Say(murderer,
+                            Translate(
+                                cause == EDeathCause.PUNCH || cause == EDeathCause.MELEE || cause == EDeathCause.GUN
+                                    ? $"{cause}_{limbWord}_REWARD"
+                                    : $"{cause}_REWARD",
+                                "", experienceReward, "EXP"), Color.green);
+                }
             }
 
             if (murderer == null) return;
