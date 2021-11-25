@@ -206,10 +206,10 @@ namespace Remastered.DeathMessages
             if (cause == EDeathCause.SUICIDE && Configuration.Instance.SuicideMessages ||
                 cause == EDeathCause.ZOMBIE && Configuration.Instance.ZombieMessages)
             {
-                UnturnedChat.Say(Translate($"DEATH_{cause}", player.CharacterName),
+                UnturnedChat.Say(Translate($"DEATH_{cause}", player?.CharacterName ?? "Someone"),
                     UnturnedChat.GetColorFromName(Configuration.Instance.Messagecolour, Color.red));
             }
-            else
+            else if(murderer != null)
             {
                 UnturnedChat.Say(
                     Translate(
