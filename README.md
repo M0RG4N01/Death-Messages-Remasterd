@@ -1,12 +1,14 @@
-# Death-Messages-Remastered
+# Death Messages Remastered
 
 This plugin allows death messages to be shown in chat when a player dies.
 Also allows giving players Uconomy cash or Exp for killing someone.
 
-[Download from harbor.rocketmod.net](https://harbor.rocketmod.net/plugins/death-messages-remastered/)
+[Download from the github releases](https://github.com/Pustalorc/Death-Messages-Remasterd/releases/latest)
 
 # Features
+
 - Custom color for all death messages (not respectively).
+- Rich text support for all death messages.
 - All death messages are fully configurable based on the cause of death.
 - Display weapon name used by the Killer (if killed with one).
 - Display remaining health of the Killer.
@@ -14,11 +16,13 @@ Also allows giving players Uconomy cash or Exp for killing someone.
 - Display warnings when someone reaches low health (private warnings).
 - Custom messages for head kills (headshot, melee to the head, punch to the head).
 - EXP or Uconomy cash given to murderers depending on which body part they hit to kill a player.
-- Enable/disable specific parts of the plugin such as Uconomy rewards, Zombie death messages, Exp rewards, Low Health Warning messages and Suicide messages.
+- Enable/disable specific parts of the plugin such as Uconomy rewards, Zombie death messages, Exp rewards, Low Health
+  Warning messages and Suicide messages.
 
 # Translations
 
 #### Kill Translations
+
 {0} - Victim's name (Defaults to `Someone` if not available)
 
 {1} - Killer's name (Defaults to `Anonymous` if not available)
@@ -37,9 +41,10 @@ Example Translation:
 
 Example Output:
 
-`Pasta was shot by Morgan from 50m using a timberwolf. Remaining health: 85%`
+`Pustalorc was shot by Morgan from 50m using a Timberwolf. Remaining health: 85%`
 
 #### Reward Translations
+
 {0} - Money Symbol (Will be empty if it's an experience reward)
 
 {1} - Money Reward
@@ -53,7 +58,9 @@ Example Output:
 `You received $50 dosh for getting a head punch kill!`
 
 # What if I don't want to use uconomy?
+
 Make sure then that you have uconomy in the library folder located in `\Servers\server\Rocket\Libraries`
 
 # What if I use AviEconomy?
+
 Then you should use UconomyToAviEconomy, provided by Avi's gateway plugin.
