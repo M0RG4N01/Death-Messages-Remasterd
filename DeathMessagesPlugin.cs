@@ -206,20 +206,24 @@ namespace Remastered.DeathMessages
             if (cause == EDeathCause.SUICIDE && Configuration.Instance.SuicideMessages ||
                 cause == EDeathCause.ZOMBIE && Configuration.Instance.ZombieMessages)
             {
-                UnturnedChat.Say(Translate($"DEATH_{cause}", player.CharacterName),
+                UnturnedChat.Say(Translate($"DEATH_{cause}", player?.CharacterName ?? "Someone"),
                     UnturnedChat.GetColorFromName(Configuration.Instance.Messagecolour, Color.red));
             }
             else
             {
+                if(cause == EDeathCause.PUNCH || cause == EDeathCause.MELEE || cause == EDeathCause.GUN)
                 UnturnedChat.Say(
                     Translate(
-                        $"DEATH_{cause}{((cause == EDeathCause.PUNCH || cause == EDeathCause.MELEE || cause == EDeathCause.GUN) && limb == ELimb.SKULL ? $"_{limb}" : "")}",
+                        $"DEATH_{cause}{(limb == ELimb.SKULL ? $"_{limb}" : "")}",
                         player?.CharacterName ?? "Someone", murderer?.CharacterName ?? "Anonymous",
                         murderer?.Health ?? 0, murderer?.CurrentVehicle?.asset?.vehicleName ?? "N/A",
                         murderer?.Player?.equipment?.asset?.itemName ?? "N/A",
                         Math.Round(Vector3.Distance(player?.Position ?? Vector3.zero,
                             murderer?.Position ?? Vector3.zero))),
                     UnturnedChat.GetColorFromName(Configuration.Instance.Messagecolour, Color.red));
+                else
+                    UnturnedChat.Say(Translate( $"DEATH_{cause}", player?.CharacterName ?? "Someone"),
+                        UnturnedChat.GetColorFromName(Configuration.Instance.Messagecolour, Color.red));
 
                 if (murderer != null)
                 {
