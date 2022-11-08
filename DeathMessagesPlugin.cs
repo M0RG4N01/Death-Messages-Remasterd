@@ -124,8 +124,10 @@ public sealed class DeathMessagesPlugin : RocketPlugin<DeathMessagesConfiguratio
     {
         if (!Configuration.Instance.HealthWarningMessages || health != 25) return;
 
-        UnturnedChat.Say(player, Translate("WARNING_LOW_HEALTH"), Color.yellow, true);
-        UnturnedChat.Say(player, Translate("WARNING_LOW_HEALTH2"), Color.yellow, true);
+        var text = Translate("WARNING_LOW_HEALTH");
+        ChatManager.serverSendMessage(text, Color.yellow, mode: EChatMode.GLOBAL, useRichTextFormatting: true);
+        text = Translate("WARNING_LOW_HEALTH2");
+        ChatManager.serverSendMessage(text, Color.yellow, mode: EChatMode.GLOBAL, useRichTextFormatting: true);
     }
 
     private void UnturnedPlayerEvents_OnPlayerDeath(UnturnedPlayer? player, EDeathCause cause, ELimb limb,
@@ -204,7 +206,8 @@ public sealed class DeathMessagesPlugin : RocketPlugin<DeathMessagesConfiguratio
         if ((cause == EDeathCause.SUICIDE && Configuration.Instance.SuicideMessages) ||
             (cause == EDeathCause.ZOMBIE && Configuration.Instance.ZombieMessages))
         {
-            UnturnedChat.Say(Translate($"DEATH_{cause}", player?.CharacterName ?? "Someone"), msgColour, true);
+            var text = Translate($"DEATH_{cause}", player?.CharacterName ?? "Someone");
+            ChatManager.serverSendMessage(text, msgColour, mode: EChatMode.GLOBAL, useRichTextFormatting: true);
         }
         else
         {
@@ -221,25 +224,30 @@ public sealed class DeathMessagesPlugin : RocketPlugin<DeathMessagesConfiguratio
             if (murderer != null && murderer.Player != null && murderer.Player.equipment != null)
                 itemName = murderer.Player.equipment.asset?.itemName ?? "N/A";
 
-            UnturnedChat.Say(
-                Translate($"DEATH_{cause}{(includeLimbWord ? $"_{limbWord}" : "")}", player?.CharacterName ?? "Someone",
-                    murderer?.CharacterName ?? "Anonymous", murderer?.Health ?? 0, vehicleName, itemName, killDistance),
-                msgColour, true);
+            var text = Translate($"DEATH_{cause}{(includeLimbWord ? $"_{limbWord}" : "")}",
+                player?.CharacterName ?? "Someone",
+                murderer?.CharacterName ?? "Anonymous", murderer?.Health ?? 0, vehicleName, itemName, killDistance);
+            ChatManager.serverSendMessage(text, msgColour, mode: EChatMode.GLOBAL, useRichTextFormatting: true);
 
             if (murderer != null)
             {
                 if (moneyReward != 0)
-                    UnturnedChat.Say(murderer,
-                        Translate(
-                            cause is EDeathCause.PUNCH or EDeathCause.MELEE or EDeathCause.GUN
-                                ? $"{cause}_{limbWord}_REWARD"
-                                : $"{cause}_REWARD", moneySymbol, moneyReward, moneyName), Color.green, true);
+                {
+                    text = Translate(
+                        cause is EDeathCause.PUNCH or EDeathCause.MELEE or EDeathCause.GUN
+                            ? $"{cause}_{limbWord}_REWARD"
+                            : $"{cause}_REWARD", moneySymbol, moneyReward, moneyName);
+                    ChatManager.serverSendMessage(text, msgColour, mode: EChatMode.GLOBAL, useRichTextFormatting: true);
+                }
+
                 if (experienceReward != 0)
-                    UnturnedChat.Say(murderer,
-                        Translate(
-                            cause is EDeathCause.PUNCH or EDeathCause.MELEE or EDeathCause.GUN
-                                ? $"{cause}_{limbWord}_REWARD"
-                                : $"{cause}_REWARD", "", experienceReward, "EXP"), Color.green, true);
+                {
+                    text = Translate(
+                        cause is EDeathCause.PUNCH or EDeathCause.MELEE or EDeathCause.GUN
+                            ? $"{cause}_{limbWord}_REWARD"
+                            : $"{cause}_REWARD", "", experienceReward, "EXP");
+                    ChatManager.serverSendMessage(text, msgColour, mode: EChatMode.GLOBAL, useRichTextFormatting: true);
+                }
             }
         }
 
